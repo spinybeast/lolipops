@@ -50,6 +50,7 @@ $config = [
             'rules' => [
                 'login' => 'admin/default/login',
                 'admin' => 'admin/default/index',
+                'news' => 'site/news',
             ],
         ],
         'authManager' => [

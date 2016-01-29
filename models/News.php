@@ -47,4 +47,9 @@ class News extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
         ];
     }
+
+    public function getPreview()
+    {
+        return mb_substr(strip_tags($this->text), 0, 200). '...';
+    }
 }

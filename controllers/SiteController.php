@@ -6,7 +6,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
+use app\models\News;
+use app\models\Video;
 use app\models\ContactForm;
 
 class SiteController extends Controller
@@ -49,7 +50,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'video' => Video::find()->one()
+        ]);
+    }
+
+    public function actionNews()
+    {
+        return $this->render('news', [
+            'news' => News::find()->orderBy('created_at desc')->all(),
+        ]);
     }
 
     public function actionLogout()

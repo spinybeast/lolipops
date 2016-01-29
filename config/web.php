@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'Illidiance',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [

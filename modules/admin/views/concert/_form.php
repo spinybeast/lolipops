@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Concert */
@@ -18,7 +19,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'place')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::className(), [
+        'options' => ['class' => 'form-control', 'style' => 'width:200px'],
+        'dateFormat' => 'yyyy-MM-dd'
+    ]) ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Concert;
+use app\models\News;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ConcertController implements the CRUD actions for Concert model.
+ * NewsController implements the CRUD actions for News model.
  */
-class ConcertController extends Controller
+class NewsController extends DefaultController
 {
     public function behaviors()
     {
@@ -27,13 +27,13 @@ class ConcertController extends Controller
     }
 
     /**
-     * Lists all Concert models.
+     * Lists all News models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Concert::find(),
+            'query' => News::find(),
         ]);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class ConcertController extends Controller
     }
 
     /**
-     * Displays a single Concert model.
+     * Displays a single News model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class ConcertController extends Controller
     }
 
     /**
-     * Creates a new Concert model.
+     * Creates a new News model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Concert();
+        $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class ConcertController extends Controller
     }
 
     /**
-     * Updates an existing Concert model.
+     * Updates an existing News model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class ConcertController extends Controller
     }
 
     /**
-     * Deletes an existing Concert model.
+     * Deletes an existing News model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class ConcertController extends Controller
     }
 
     /**
-     * Finds the Concert model based on its primary key value.
+     * Finds the News model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Concert the loaded model
+     * @return News the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Concert::findOne($id)) !== null) {
+        if (($model = News::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

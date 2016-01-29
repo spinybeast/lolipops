@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * VideoController implements the CRUD actions for Video model.
  */
-class VideoController extends Controller
+class VideoController extends DefaultController
 {
     public function behaviors()
     {

@@ -6,7 +6,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'admin' => ['class' => 'app\modules\admin\Module'],
+    ],
     'components' => [
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '9zA6Y-BX0ayDnxujGFOtANxVZOM6AB-W',
@@ -16,6 +20,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+            'loginUrl' => ['admin/default/login'],
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -43,8 +48,13 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                // ...
+                'login' => 'admin/default/login',
+                'admin' => 'admin/default/index',
             ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+            'defaultRoles' => ['admin'], // Здесь нет роли "guest", т.к. эта роль виртуальная и не присутствует в модели UserExt
         ],
     ],
 

@@ -51,4 +51,9 @@ class Concert extends \yii\db\ActiveRecord
             'link' => 'Link',
         ];
     }
+    public function getCountries()
+    {
+        return $this->hasMany(Country::className(), ['id' => 'country_id'])
+            ->viaTable('{{%post_country_assn}}', ['post_id' => 'id']);
+    }
 }

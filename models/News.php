@@ -14,6 +14,7 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    const LAST_NEWS_LIMIT = 3;
     /**
      * @inheritdoc
      */

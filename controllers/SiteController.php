@@ -8,7 +8,6 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\News;
 use app\models\Video;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -41,10 +40,6 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
 
@@ -62,28 +57,26 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLogout()
+    public function actionPress()
     {
-        Yii::$app->user->logout();
+        return $this->render('press');
+    }
 
-        return $this->goHome();
+    public function actionReleases()
+    {
+        return $this->render('releases', [
+            'news' => News::find()->orderBy('created_at desc')->all(),
+        ]);
+    }
+
+    public function actionCommunity()
+    {
+        return $this->render('community');
     }
 
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->render('contact');
     }
 
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

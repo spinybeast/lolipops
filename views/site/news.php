@@ -1,10 +1,16 @@
+<?php
+use app\models\News;
 
+/* @var $this yii\web\View */
+/** @var $latestNews News[] */
+$this->title = 'News Archives'
+?>
 <div class="site-news">
     <?php /** @var News[] $news */
     if (!empty($news)) { ?>
         <div class="latest-news">
             <p class="news-header text-center text-uppercase">
-                <b>Latest news</b>
+                <b><?= $this->title ?></b>
             </p>
             <?php foreach ($news as $item) { ?>
                 <div class="news-item">

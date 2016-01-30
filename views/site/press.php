@@ -4,9 +4,9 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Contact';
+$this->title = 'Press';
 ?>
-<div class="site-contact">
+<div class="site-press">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>

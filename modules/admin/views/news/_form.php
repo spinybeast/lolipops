@@ -17,8 +17,8 @@ use dosamigos\ckeditor\CKEditor;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->widget(CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'basic'
+        'options' => ['rows' => 8],
+        'preset' => 'full'
     ]) ?>
 
     <?= $form->field($model, 'created_at')->widget(DatePicker::className(), [

@@ -20,7 +20,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode(Yii::$app->id . ' | ' . $this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -37,17 +37,20 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
+        'encodeLabels' => false,
         'items' => [
-            ['label' => 'Новости', 'url' => ['/admin/news']],
-            ['label' => 'Концерты', 'url' => ['/admin/concert']],
-            ['label' => 'Видео', 'url' => ['/admin/video']],
+            ['label' => FA::icon('newspaper-o') . ' Новости', 'url' => ['/admin/news']],
+            ['label' => FA::icon('music') . ' Концерты', 'url' => ['/admin/concert']],
+            ['label' => FA::icon('youtube-play') . ' Видео', 'url' => ['/admin/video']],
+            ['label' => FA::icon('floppy-o') . ' Релизы', 'url' => ['/admin/release']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Авторизация', 'url' => ['/site/login']] :
+                ['label' => FA::icon('sign-in') . ' Авторизация', 'url' => ['/login']] :
                 [
-                    'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
+                    'label' => FA::icon('sign-out') . ' Выход (' . Yii::$app->user->identity->username . ')',
+                    'url' => ['/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
+            ['label' => 'Открыть сайт', 'url' => Url::home(), 'linkOptions' => ['target' => '_blank']],
         ],
     ]);
     NavBar::end();

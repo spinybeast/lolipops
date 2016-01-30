@@ -15,26 +15,33 @@ $this->title = 'Админка';
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Новости <?= FA::icon('newspaper-o') ?></h2>
+            <div class="col-lg-3">
+                <h2><?= FA::icon('newspaper-o') ?> Новости</h2>
 
-                <p>Создавать и редактировать новости сайта</p>
+                <p>Создавать и редактировать новости сайта для отображения на странице /news</p>
 
                 <p><a class="btn btn-primary" href="<?= Url::to(['/admin/news'])?>">Начать &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Концерты <?= FA::icon('music') ?></h2>
+            <div class="col-lg-3">
+                <h2><?= FA::icon('music') ?> Концерты</h2>
 
-                <p>Добавлять и редактировать концерты</p>
+                <p>Добавлять и редактировать концерты для отображения на главной странице</p>
 
                 <p><a class="btn btn-primary" href="<?= Url::to(['/admin/concert'])?>">Начать &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Видео <?= FA::icon('youtube-play') ?></h2>
+            <div class="col-lg-3">
+                <h2><?= FA::icon('youtube-play') ?> Видео</h2>
 
-                <p>Вставка видео на главной странице</p>
+                <p>Вставка видео на главной странице и описания к нему</p>
 
                 <p><a class="btn btn-primary" href="<?= Url::to(['/admin/video'])?>">Начать &raquo;</a></p>
+            </div>
+            <div class="col-lg-3">
+                <h2><?= FA::icon('floppy-o') ?> Релизы</h2>
+
+                <p>Добавление и редактирование вышедших релизов для отображения на странице /releases</p>
+
+                <p><a class="btn btn-primary" href="<?= Url::to(['/admin/release'])?>">Начать &raquo;</a></p>
             </div>
         </div>
 

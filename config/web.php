@@ -49,8 +49,13 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 'login' => 'admin/default/login',
+                'logout' => 'admin/default/logout',
                 'admin' => 'admin/default/index',
                 'news' => 'site/news',
+                'press' => 'site/press',
+                'releases' => 'site/releases',
+                'community' => 'site/community',
+                'contact' => 'site/contact',
             ],
         ],
         'authManager' => [

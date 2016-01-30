@@ -4,9 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\News;
 
@@ -19,7 +19,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode(strtoupper(Yii::$app->id) . ' | ' . $this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -34,21 +34,26 @@ AppAsset::register($this);
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 <div class="wrap">
+    <div class="head">
+        <div class="logo text-uppercase text-center">
+            <p style="padding: 25px; border-top:2px dotted black; border-bottom: 2px dotted black; margin: 20px 0;">
+                <?= Yii::$app->id ?>
+            </p>
+            <p>The official website</p>
+        </div>
+        <?= Html::img('/img/head.jpg', ['class' => 'img-responsive', 'style' => 'width: 100%'])?>
+    </div>
     <?php
-    NavBar::begin([
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
+    NavBar::begin([]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Press', 'url' => ['/site/about']],
-            ['label' => 'Releases', 'url' => ['/site/about']],
-            ['label' => 'Community', 'url' => ['/site/about']],
-            ['label' => 'Shop', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Home', 'url' => ['/']],
+            ['label' => 'Press', 'url' => ['/press']],
+            ['label' => 'Releases', 'url' => ['/releases']],
+            ['label' => 'Community', 'url' => ['/community']],
+            ['label' => 'Shop', 'url' => 'http://facebook.com/illidianceband', 'linkOptions' => ['target' => '_blank']],
+            ['label' => 'Contact', 'url' => ['/contact']],
         ],
     ]);
     NavBar::end();
@@ -60,7 +65,7 @@ AppAsset::register($this);
         </div>
         <div class="col-md-4">
             <?php /** @var News[] $latestNews */
-            $latestNews = News::find()->limit(3)->orderBy('created_at desc')->all();
+            $latestNews = News::find()->limit(News::LAST_NEWS_LIMIT)->orderBy('created_at desc')->all();
 
             if (!empty($latestNews)) { ?>
                 <div class="latest-news">
@@ -78,6 +83,9 @@ AppAsset::register($this);
                         <hr>
                     <?php } ?>
                 </div>
+                <p class="header text-uppercase">
+                    news archives
+                </p>
             <?php } ?>
             <p class="header text-uppercase">
                 Facebook
@@ -101,8 +109,9 @@ AppAsset::register($this);
             <p class="header text-uppercase">
                 also check
             </p>
-            <a href="http://www.amaranthe.se/fanclub/" target="_blank"><img src="/img/fanclub.jpg" width="301" height="527"
-                                                                            alt=""></a>
+            <a href="<?= Url::to('/community')?>">
+                <?= Html::img('/img/fanclub.jpg', ['alt' => 'Community'])?>
+            </a>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Country;
 use app\modules\admin\controllers\DefaultController;
 use Yii;
 use app\models\Concert;
@@ -33,6 +34,7 @@ class ConcertController extends DefaultController
      */
     public function actionIndex()
     {
+        Country::getAll();
         $dataProvider = new ActiveDataProvider([
             'query' => Concert::find(),
         ]);

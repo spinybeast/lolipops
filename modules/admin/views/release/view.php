@@ -29,9 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'cover',
+            [
+                'attribute' => 'cover',
+                'value' => $model->getUploadUrl('cover'),
+                'format' => ['image',['width'=>'200']],
+            ],
             'title',
-            'description:ntext',
+            'description:html',
         ],
     ]) ?>
 

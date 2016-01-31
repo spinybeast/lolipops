@@ -46,7 +46,10 @@ class Release extends \yii\db\ActiveRecord
                 'placeholder' => '@webroot/img/releases/no-image.jpg',
                 'path' => '@webroot/img/releases/{id}',
                 'url' => '@web/img/releases/{id}',
-                'thumbs' => [],
+                'thumbs' => [
+                    'thumb' => ['width' => 400, 'quality' => 90],
+                    'preview' => ['width' => 200, 'height' => 200],
+                ],
             ],
         ];
     }

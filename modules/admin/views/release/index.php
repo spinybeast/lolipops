@@ -20,12 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'cover',
+            [
+                'header' => 'Img',
+                'value' => function($data) { return $data->getUploadUrl('cover'); },
+                'format' => ['image', ['width' => 100]],
+            ],
             'title',
-            'description:ntext',
+            'description:html',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

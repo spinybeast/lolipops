@@ -1,10 +1,10 @@
 <?php
-use app\models\News;
+use app\models\Concert;
 use app\models\Video;
 use \yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/** @var $latestNews News[] */
+/** @var $concerts Concert[] */
 /** @var $video Video */
 $this->title = 'Home'
 ?>
@@ -25,5 +25,28 @@ $this->title = 'Home'
                 <?= $video->description ?>
             </div>
         </div>
+    <?php }
+    if (!empty($concerts)) { ?>
+        <p class="header-big text-uppercase" style="margin: 10px">
+            On tour
+        </p>
+        <table class="table-responsive">
+            <?php foreach ($concerts as $concert) { ?>
+                <tr>
+                    <td>
+                        <div class="flag flag-<?= $concert->country ?>"></div>
+                    </td>
+                    <td><?= date('F j, Y', strtotime($concert->date)) ?></td>
+                    <td><?= $concert->city ?>, <?= $concert->countryObject ? $concert->countryObject->name : '' ?>
+                        <br><?= $concert->place ?>
+                    </td>
+                    <td><a href="<?= $concert->link ?>" target="_blank">VENUE</a></td>
+                </tr>
+            <?php } ?>
+        </table>
+        <?php if ($showArchives) {
+            echo Html::a('TOUR ARCHIVES', ['/concerts']);
+        }?>
     <?php } ?>
+
 </div>

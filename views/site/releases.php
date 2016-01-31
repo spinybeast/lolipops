@@ -3,15 +3,27 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use app\models\Release;
 
 $this->title = 'Releases';
 ?>
 <div class="site-releases">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        This is the <?= Html::encode($this->title) ?> page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
+    <?php /** @var Release[] $releases */
+    if (!empty($releases)) { ?>
+        <div class="latest-news">
+            <p class="news-header text-center text-uppercase">
+                <b><?= $this->title ?></b>
+            </p>
+            <?php foreach ($releases as $item) { ?>
+                <div class="releases-item">
+                    <div class="col-md-4"><?=Html::img($item->getUploadUrl('cover'), ['class' => 'img-responsive'])?></div>
+                    <div class="col-md-8"><p class="title"><?= $item->title ?></p>
+                        <div><?= $item->description ?></div>
+                    </div>
+                </div>
+                <div class="clear"  style="clear: both;" ></div>
+                <hr>
+            <?php } ?>
+        </div>
+    <?php } ?>
 </div>

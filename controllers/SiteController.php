@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Concert;
+use app\models\Release;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -46,7 +48,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index',[
-            'video' => Video::find()->one()
+            'video' => Video::find()->one(),
+            'concerts' => Concert::find()->where(['>=', 'date', date('Y-m-d')])->orderBy('date desc')->all(),
+            'showArchives' => Concert::find()->where(['<=', 'date', date('Y-m-d')])->count() > 0
+        ]);
+    }
+
+    public function actionConcerts()
+    {
+        return $this->render('concerts',[
+            'concerts' => Concert::find()->orderBy('date desc')->all(),
         ]);
     }
 
@@ -65,7 +76,7 @@ class SiteController extends Controller
     public function actionReleases()
     {
         return $this->render('releases', [
-            'news' => News::find()->orderBy('created_at desc')->all(),
+            'releases' => Release::find()->all(),
         ]);
     }
 
@@ -77,6 +88,11 @@ class SiteController extends Controller
     public function actionContact()
     {
         return $this->render('contact');
+    }
+
+    public function actionShop()
+    {
+        return $this->render('shop');
     }
 
 }

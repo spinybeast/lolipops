@@ -51,9 +51,18 @@ class Concert extends \yii\db\ActiveRecord
             'link' => 'Link',
         ];
     }
-    public function getCountries()
+
+    public function getCountryObject()
     {
-        return $this->hasMany(Country::className(), ['id' => 'country_id'])
-            ->viaTable('{{%post_country_assn}}', ['post_id' => 'id']);
+        return Country::findByCode($this->country);
+    }
+
+    public function isActual()
+    {
+        if ($this->date >= date('Y-m-d')) {
+            return true;
+        }
+
+        return false;
     }
 }

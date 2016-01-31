@@ -23,11 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'country',
+            [
+                'header' => 'Country',
+                'value' => function($data) { return $data->countryObject ? $data->countryObject->name : ''; },
+            ],
             'city',
             'place:ntext',
             'date',
-            // 'link',
+            'link',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

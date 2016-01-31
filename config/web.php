@@ -56,6 +56,8 @@ $config = [
                 'releases' => 'site/releases',
                 'community' => 'site/community',
                 'contact' => 'site/contact',
+                'shop' => 'site/shop',
+                'concerts' => 'site/concerts',
             ],
         ],
         'authManager' => [

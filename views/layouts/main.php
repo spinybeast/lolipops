@@ -84,7 +84,7 @@ AppAsset::register($this);
                     <?php } ?>
                 </div>
                 <p class="header text-uppercase">
-                    news archives
+                    <a href="/news">news archives</a>
                 </p>
             <?php } ?>
             <p class="header text-uppercase">

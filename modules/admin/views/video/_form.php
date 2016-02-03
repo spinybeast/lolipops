@@ -17,7 +17,6 @@ use dosamigos\ckeditor\CKEditor;
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'basic'
     ]) ?>
 
     <div class="form-group">

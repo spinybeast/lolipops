@@ -57,7 +57,7 @@ class SiteController extends Controller
     public function actionConcerts()
     {
         return $this->render('concerts',[
-            'concerts' => Concert::find()->orderBy('date desc')->all(),
+            'concerts' => Concert::find()->orderBy('date asc')->all(),
         ]);
     }
 

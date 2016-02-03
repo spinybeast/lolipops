@@ -11,10 +11,10 @@ $this->title = 'Home'
 <div class="site-index">
 
     <?php
-    echo Html::img('/img/bannersingle.jpg', ['class' => 'img-responsive']);
-    echo Html::tag('br');
-    echo Html::tag('br');
-    echo Html::img('/img/banner-ontour.jpg', ['class' => 'img-responsive']);
+//    echo Html::img('/img/bannersingle.jpg', ['class' => 'img-responsive']);
+//    echo Html::tag('br');
+//    echo Html::tag('br');
+//    echo Html::img('/img/banner-ontour.jpg', ['class' => 'img-responsive']);
     if (!empty($video)) { ?>
         <p class="header-big text-uppercase" style="margin: 10px">
             Watch now
@@ -30,13 +30,13 @@ $this->title = 'Home'
         <p class="header-big text-uppercase" style="margin: 10px">
             On tour
         </p>
-        <table class="table-responsive">
+        <table class="table table-responsive">
             <?php foreach ($concerts as $concert) { ?>
                 <tr>
                     <td>
                         <div class="flag flag-<?= $concert->country ?>"></div>
                     </td>
-                    <td><?= date('F j, Y', strtotime($concert->date)) ?></td>
+                    <td><?= date('F j, Y (D)', strtotime($concert->date)) ?></td>
                     <td><?= $concert->city ?>, <?= $concert->countryObject ? $concert->countryObject->name : '' ?>
                         <br><?= $concert->place ?>
                     </td>

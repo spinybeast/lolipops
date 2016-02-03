@@ -5,4 +5,4 @@
 $this->title = 'Shop';
 ?>
 
-<h1 class="header-big text-uppercase">Coming Soon...</h1>
+<h1 class="header-big text-uppercase">Under construction</h1>

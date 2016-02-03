@@ -52,7 +52,7 @@ AppAsset::register($this);
             ['label' => 'Press', 'url' => ['/press']],
             ['label' => 'Releases', 'url' => ['/releases']],
             ['label' => 'Community', 'url' => ['/community']],
-            ['label' => 'Shop', 'url' => 'http://facebook.com/illidianceband', 'linkOptions' => ['target' => '_blank']],
+            ['label' => 'Shop', 'url' => ['/shop']],
             ['label' => 'Contact', 'url' => ['/contact']],
         ],
     ]);
